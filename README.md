@@ -22,9 +22,13 @@ Records: 0  Duplicates: 0  Warnings: 0
 mysql> INSERT INTO employees (birth_date, first_name, last_name, gender, salary, title, title_date)
     -> VALUES
     -> ('1980-01-01', 'John', 'Doe', 'M', 45000.00, 'Manager', '2020-01-15'),
+    
     -> ('1985-05-20', 'Jane', 'Smith', 'F', 38000.00, 'Engineer', '2020-03-22'),
+    
     -> ('1990-07-15', 'John', 'Davis', 'M', 52000.00, 'Director', '2019-11-01'),
+    
     -> ('1978-11-23', 'Alice', 'Brown', 'F', 15000.00, 'Technician', '2021-05-05'),
+    
     -> ('1983-03-30', 'Michael', 'Johnson', 'M', 10000.00, 'Intern', '2021-07-12'),
     -> ('1995-09-17', 'John', 'Wilson', 'M', 22000.00, 'Clerk', '2020-10-25'),
     -> ('1982-02-02', 'Emily', 'Moore', 'F', 7000.00, 'Assistant', '2018-12-15'),
@@ -46,6 +50,7 @@ Query OK, 1 row affected (0.02 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 mysql> SELECT * FROM employees WHERE salary > 20000;
+
 +----+------------+------------+-----------+--------+----------+-----------+------------+
 | id | birth_date | first_name | last_name | gender | salary   | title     | title_date |
 +----+------------+------------+-----------+--------+----------+-----------+------------+
@@ -58,9 +63,10 @@ mysql> SELECT * FROM employees WHERE salary > 20000;
 | 12 | 1976-10-10 | Sarah      | White     | F      | 45000.00 | Manager   | 2016-08-21 |
 | 13 | 1993-11-16 | James      | Harris    | M      | 25000.00 | Designer  | 2019-12-14 |
 +----+------------+------------+-----------+--------+----------+-----------+------------+
-8 rows in set (0.01 sec)
+
 
 mysql> SELECT * FROM employees WHERE salary < 10000;
+
 +----+------------+------------+-----------+--------+---------+-----------+------------+
 | id | birth_date | first_name | last_name | gender | salary  | title     | title_date |
 +----+------------+------------+-----------+--------+---------+-----------+------------+
