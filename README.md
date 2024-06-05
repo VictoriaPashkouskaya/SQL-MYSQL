@@ -16,10 +16,22 @@
     ```sql
     CREATE DATABASE my_company_database;
     ```
+
+    **Resultado:**
+    ```
+    Query OK, 1 row affected (0.00 sec)
+    ```
+
 3. Cambie a la nueva base de datos:
     ```sql
     USE my_company_database;
     ```
+
+    **Resultado:**
+    ```
+    Database changed
+    ```
+
 4. Cree la tabla `employees` con los campos indicados:
     ```sql
     CREATE TABLE employees (
@@ -31,6 +43,11 @@
     );
     ```
 
+    **Resultado:**
+    ```
+    Query OK, 0 rows affected (0.05 sec)
+    ```
+
 #### 1.2. Añadir Nuevas Columnas
 
 5. Añada nuevas columnas a la tabla `employees`:
@@ -39,6 +56,12 @@
     ADD COLUMN salary DECIMAL(10, 2),
     ADD COLUMN title VARCHAR(50),
     ADD COLUMN title_date DATE;
+    ```
+
+    **Resultado:**
+    ```
+    Query OK, 0 rows affected (0.04 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
     ```
 
 ### 2. Ejecución de Consultas SQL
@@ -66,6 +89,12 @@
     ('1997-07-07', 'Robert', 'Thompson', 'M', 5000.00, 'Intern', '2021-03-20');
     ```
 
+    **Resultado:**
+    ```
+    Query OK, 15 rows affected (0.02 sec)
+    Records: 15  Duplicates: 0  Warnings: 0
+    ```
+
 #### 2.2. Actualizar Datos
 
 7. Actualice el nombre de un empleado específico:
@@ -75,6 +104,12 @@
     WHERE first_name = 'John' AND last_name = 'Wilson' AND birth_date = '1995-09-17';
     ```
 
+    **Resultado:**
+    ```
+    Query OK, 1 row affected (0.02 sec)
+    Rows matched: 1  Changed: 1  Warnings: 0
+    ```
+
 #### 2.3. Obtener Datos
 
 8. Seleccione empleados con un salario superior a 20,000:
@@ -82,9 +117,36 @@
     SELECT * FROM employees WHERE salary > 20000;
     ```
 
+    **Resultado:**
+    ```
+    +----+------------+------------+-----------+--------+----------+-----------+------------+
+    | id | birth_date | first_name | last_name | gender | salary   | title     | title_date |
+    +----+------------+------------+-----------+--------+----------+-----------+------------+
+    |  1 | 1980-01-01 | John       | Doe       | M      | 45000.00 | Manager   | 2020-01-15 |
+    |  2 | 1985-05-20 | Jane       | Smith     | F      | 38000.00 | Engineer  | 2020-03-22 |
+    |  3 | 1990-07-15 | John       | Davis     | M      | 52000.00 | Director  | 2019-11-01 |
+    |  6 | 1995-09-17 | Jonathan   | Wilson    | M      | 22000.00 | Clerk     | 2020-10-25 |
+    | 10 | 1994-12-21 | Matthew    | Thomas    | M      | 30000.00 | Sales     | 2020-01-11 |
+    | 11 | 1989-01-31 | David      | Jackson   | M      | 27000.00 | Developer | 2019-03-03 |
+    | 12 | 1976-10-10 | Sarah      | White     | F      | 45000.00 | Manager   | 2016-08-21 |
+    | 13 | 1993-11-16 | James      | Harris    | M      | 25000.00 | Designer  | 2019-12-14 |
+    +----+------------+------------+-----------+--------+----------+-----------+------------+
+    ```
+
 9. Seleccione empleados con un salario inferior a 10,000:
     ```sql
     SELECT * FROM employees WHERE salary < 10000;
+    ```
+
+    **Resultado:**
+    ```
+    +----+------------+------------+-----------+--------+---------+-----------+------------+
+    | id | birth_date | first_name | last_name | gender | salary  | title     | title_date |
+    +----+------------+------------+-----------+--------+---------+-----------+------------+
+    |  7 | 1982-02-02 | Emily      | Moore     | F      | 7000.00 | Assistant | 2018-12-15 |
+    |  8 | 1991-06-12 | Sophia     | Taylor    | F      | 5000.00 | Secretary | 2020-04-17 |
+    | 15 | 1997-07-07 | Robert     | Thompson  | M      | 5000.00 | Intern    | 2021-03-20 |
+    +----+------------+------------+-----------+--------+---------+-----------+------------+
     ```
 
 10. Seleccione empleados con un salario entre 14,000 y 50,000:
@@ -92,9 +154,36 @@
     SELECT * FROM employees WHERE salary BETWEEN 14000 AND 50000;
     ```
 
+    **Resultado:**
+    ```
+    +----+------------+------------+-----------+--------+----------+-----------+------------+
+    | id | birth_date | first_name | last_name | gender | salary   | title     | title_date |
+    +----+------------+------------+-----------+--------+----------+-----------+------------+
+    |  1 | 1980-01-01 | John       | Doe       | M      | 45000.00 | Manager   | 2020-01-15 |
+    |  2 | 1985-05-20 | Jane       | Smith     | F      | 38000.00 | Engineer  | 2020-03-22 |
+    |  3 | 1990-07-15 | John       | Davis     | M      | 52000.00 | Director  | 2019-11-01 |
+    |  4 | 1978-11-23 | Alice      | Brown     | F      | 15000.00 | Technician| 2021-05-05 |
+    |  6 | 1995-09-17 | Jonathan   | Wilson    | M      | 22000.00 | Clerk     | 2020-10-25 |
+    | 10 | 1994-12-21 | Matthew    | Thomas    | M      | 30000.00 | Sales     | 2020-01-11 |
+    | 11 | 1989-01-31 | David      | Jackson   | M      | 27000.00 | Developer | 2019-03-03 |
+    | 12 | 1976-10-10 | Sarah      | White     | F      | 45000.00 | Manager   | 2016-08-21 |
+    | 13 | 1993-11-16 | James      | Harris    | M      | 25000.00 | Designer  | 2019-12-14 |
+    | 14 | 1992-04-24 | Laura      | Martin    | F      | 16000.00 | PR        | 2020-06-30 |
+    +----+------------+------------+-----------+--------+----------+-----------+------------+
+    ```
+
 11. Seleccione el número total de empleados:
     ```sql
     SELECT COUNT(*) FROM employees;
+    ```
+
+    **Resultado:**
+    ```
+    +----------+
+    | COUNT(*) |
+    +----------+
+    |       15 |
+    +----------+
     ```
 
 12. Seleccione los títulos del año 2019:
@@ -102,14 +191,70 @@
     SELECT title FROM employees WHERE YEAR(title_date) = 2019;
     ```
 
+    **Resultado:**
+    ```
+    +-----------+
+    | title     |
+    +-----------+
+    | Director  |
+    | Developer |
+    | Designer  |
+    +-----------+
+    ```
+
 13. Seleccione solo los nombres de los empleados en mayúsculas:
     ```sql
     SELECT UPPER(first_name) FROM employees;
     ```
 
+    **Resultado:**
+    ```
+    +-------------------+
+    | UPPER(first_name) |
+    +-------------------+
+    | JOHN              |
+    | JANE              |
+    | JOHN              |
+    | ALICE             |
+    | MICHAEL           |
+    | JONATHAN          |
+    | EMILY             |
+    | SOPHIA            |
+    | CHRIS             |
+    | MATTHEW           |
+    | DAVID             |
+    | SARAH             |
+    | JAMES             |
+    | LAURA             |
+    | ROBERT            |
+    +-------------------+
+    ```
+
 14. Seleccione nombres únicos de empleados:
     ```sql
     SELECT DISTINCT first_name FROM employees;
+    ```
+
+    **Resultado:**
+    ```
+    +------------+
+    | first_name |
+    +------------+
+    | John       |
+    | Jane       |
+    | Alice      |
+    | Michael    |
+    | Jonathan   |
+    | Emily      |
+    | Sophia     |
+    | Chris      |
+    | Matthew    |
+    | David      |
+    | Sarah      |
+    | James      |
+    | Laura      |
+    | Robert     |
+    +------------+
     ```
 
 #### 2.4. Borrar Datos
@@ -119,17 +264,22 @@
     DELETE FROM employees WHERE id = 5;
     ```
 
+    **Resultado:**
+    ```
+    Query OK, 1 row affected (0.01 sec)
+    ```
+
 16. Elimine a todos los empleados con un salario superior a 20,000:
     ```sql
     DELETE FROM employees WHERE salary > 20000;
+    ```
+
+    **Resultado:**
+    ```
+    Query OK, 8 rows affected (0.01 sec)
     ```
 
 ## Conclusión
 
 Siguiendo estos pasos, podrá crear y gestionar una base de datos relacional básica, realizar consultas SQL y gestionar datos en la tabla. Esto le ayudará a comprender mejor el trabajo con bases de datos y mejorar sus habilidades en SQL.
 
-
-mysql> DELETE FROM employees WHERE salary > 20000;
-Query OK, 8 rows affected (0.01 sec)
-
-mysql>
